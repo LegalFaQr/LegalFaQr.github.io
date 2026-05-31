@@ -68,7 +68,6 @@ const Navigation = memo(function Navigation({ activeSection }: { activeSection: 
               src="/logo.png"
               alt="Shadovis Technologies"
               className="h-7 w-auto"
-              style={{ filter: 'invert(1)', mixBlendMode: 'multiply' }}
             />
           </button>
 
