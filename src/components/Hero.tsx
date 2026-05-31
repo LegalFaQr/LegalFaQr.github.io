@@ -1,182 +1,127 @@
 import { useState, memo } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import MagneticButton from './MagneticButton';
+import ScrambleText from './ScrambleText';
 import { getLenis } from '../hooks/useLenis';
 
-const ease: [number, number, number, number] = [0.16, 1, 0.3, 1]; // Custom spring-like easing
-
-const headingLines = [
-  { text: 'Intelligent software', hasAccent: false },
-  { text: 'that doesn\'t need', hasAccent: true },
-  { text: 'a manual.', hasAccent: false },
-];
+const ease: [number, number, number, number] = [0.16, 1, 0.3, 1]; 
 
 const Hero = memo(function Hero() {
   const [primaryHover, setPrimaryHover] = useState(false);
-  const [secondaryHover, setSecondaryHover] = useState(false);
   
   const { scrollY } = useScroll();
-  const backgroundY = useTransform(scrollY, [0, 1000], ['0%', '15%']);
+  const backgroundY = useTransform(scrollY, [0, 1000], ['0%', '20%']);
 
-  const scrollToVision = () => {
+  const scrollToProducts = () => {
     const lenis = getLenis();
     const el = document.getElementById('products');
-    if (el && lenis) {
-      lenis.scrollTo(el, { offset: -64, duration: 1.2 });
-    } else if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (el && lenis) lenis.scrollTo(el, { offset: -64, duration: 1.2 });
+    else if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <section
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-24"
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pt-24"
       style={{
         backgroundColor: '#ffffff',
       }}
     >
-      {/* Dot matrix background pattern */}
+      {/* Dot matrix background pattern with deeper parallax */}
       <motion.div
-        className="pointer-events-none absolute inset-0 opacity-[0.15]"
+        className="pointer-events-none absolute inset-0 opacity-[0.2]"
         style={{
           y: backgroundY,
           backgroundImage: 'radial-gradient(#000000 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
-          maskImage: 'linear-gradient(to bottom, black 20%, transparent 80%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, black 20%, transparent 80%)',
+          backgroundSize: '32px 32px',
+          maskImage: 'linear-gradient(to bottom, black 30%, transparent 90%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, black 30%, transparent 90%)',
         }}
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto w-full flex flex-col items-center text-center" style={{ maxWidth: '1000px', zIndex: 10 }}>
+      <div className="relative mx-auto w-full max-w-[1400px] z-10 flex flex-col justify-center h-full">
+        
         {/* Overline */}
         <motion.div
-          className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/5 px-4 py-1.5 mb-8"
+          className="inline-flex items-center gap-3 mb-8 self-start md:self-center"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease }}
+          transition={{ duration: 0.6, delay: 0.2, ease }}
         >
-          <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
-          <span className="text-xs font-semibold tracking-widest text-black/70 uppercase">
-            Shadovis Technologies Pvt. Ltd.
+          <span className="w-2.5 h-2.5 rounded-full bg-black animate-ping" />
+          <span className="text-sm font-bold tracking-[0.2em] text-black uppercase">
+            <ScrambleText text="SHADOVIS TECHNOLOGIES" delay={300} />
           </span>
         </motion.div>
 
-        {/* Main heading with clip-path reveal */}
+        {/* Massive Headline */}
         <h1
-          className="font-bold tracking-tighter"
+          className="font-black uppercase text-left md:text-center leading-[0.85] tracking-tighter"
           style={{
-            lineHeight: 1.05,
-            letterSpacing: '-0.04em',
-            marginBottom: '2rem',
-            fontSize: 'clamp(3rem, 8vw, 6.5rem)',
+            fontSize: 'clamp(4.5rem, 12vw, 11rem)',
             color: '#000000',
+            marginBottom: '2rem',
+            marginLeft: '-0.04em', // Visual alignment for negative tracking
           }}
         >
-          {headingLines.map((line, i) => (
-            <span key={i} className="block overflow-hidden pb-2">
-              <motion.span
-                className="block"
-                initial={{ y: '100%' }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 + i * 0.1, ease }}
-              >
-                {line.hasAccent ? (
-                  <>
-                    {'that '}
-                    <span className="text-black/40 italic font-medium">doesn&apos;t</span>
-                    {' need'}
-                  </>
-                ) : (
-                  line.text
-                )}
-              </motion.span>
-            </span>
-          ))}
+          <div className="overflow-hidden">
+            <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} transition={{ duration: 1, delay: 0.4, ease }}>
+              <ScrambleText text="TECH FROM" delay={600} />
+            </motion.div>
+          </div>
+          <div className="overflow-hidden">
+            <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} transition={{ duration: 1, delay: 0.5, ease }}>
+              <ScrambleText text="THE FUTURE." delay={900} />
+            </motion.div>
+          </div>
         </h1>
 
-        {/* Subline */}
-        <motion.p
-          style={{
-            fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-            lineHeight: 1.6,
-            color: '#525252',
-            maxWidth: '640px',
-            marginBottom: '3rem',
-            fontWeight: 400,
-            letterSpacing: '-0.01em',
-          }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.7, ease }}
-        >
-          AI-powered software for everyone — from someone who doesn&apos;t know how a computer works to someone who knows everything.
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div
-          className="flex flex-wrap items-center justify-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.9, ease }}
-        >
-          <MagneticButton
-            onClick={scrollToVision}
-            className="inline-flex items-center cursor-pointer font-semibold transition-transform duration-300"
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mt-12 md:mt-24">
+          {/* Brutally confident subline */}
+          <motion.p
+            className="font-medium text-left"
             style={{
-              backgroundColor: '#000000',
-              color: '#ffffff',
-              padding: '1rem 2rem',
-              borderRadius: '99px',
-              fontSize: '1rem',
-              letterSpacing: '-0.01em',
-              border: 'none',
-              transform: primaryHover ? 'scale(0.96)' : 'scale(1)',
-              boxShadow: primaryHover ? '0 8px 32px rgba(0,0,0,0.15)' : '0 4px 12px rgba(0,0,0,0.1)',
-            }}
-            onMouseEnter={() => setPrimaryHover(true)}
-            onMouseLeave={() => setPrimaryHover(false)}
-          >
-            See What We&apos;re Building
-          </MagneticButton>
-
-          <MagneticButton
-            onClick={() => {
-              const lenis = getLenis();
-              const el = document.getElementById('vision');
-              if (el && lenis) lenis.scrollTo(el, { offset: -64, duration: 1.2 });
-              else if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="inline-flex items-center cursor-pointer font-semibold transition-all duration-300"
-            style={{
+              fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+              lineHeight: 1.5,
               color: '#000000',
-              padding: '1rem 2rem',
-              borderRadius: '99px',
-              fontSize: '1rem',
-              letterSpacing: '-0.01em',
-              border: '1px solid rgba(0,0,0,0.1)',
-              transform: secondaryHover ? 'scale(0.96)' : 'scale(1)',
-              backgroundColor: secondaryHover ? 'rgba(0,0,0,0.03)' : 'transparent',
+              maxWidth: '540px',
+              letterSpacing: '-0.02em',
             }}
-            onMouseEnter={() => setSecondaryHover(true)}
-            onMouseLeave={() => setSecondaryHover(false)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.5, ease }}
           >
-            About Us
-          </MagneticButton>
-        </motion.div>
-      </div>
+            We build impossible software that the industry hasn't even heard of yet. And we make it so simple that absolutely anyone can use it.
+          </motion.p>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
-      >
-        <div
-          className="w-[1px] h-16 bg-gradient-to-b from-black/20 to-transparent"
-        />
-      </motion.div>
+          {/* CTAs */}
+          <motion.div
+            className="flex items-center gap-4 shrink-0"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 1.7, ease }}
+          >
+            <MagneticButton
+              onClick={scrollToProducts}
+              className="inline-flex items-center justify-center cursor-pointer font-bold uppercase tracking-wide transition-all duration-300"
+              style={{
+                backgroundColor: '#000000',
+                color: '#ffffff',
+                padding: '1.25rem 2.5rem',
+                borderRadius: '0px', // Brutalist square button
+                fontSize: '0.875rem',
+                border: '1px solid #000000',
+                transform: primaryHover ? 'scale(0.96)' : 'scale(1)',
+                boxShadow: primaryHover ? '12px 12px 0px rgba(0,0,0,0.1)' : '0px 0px 0px rgba(0,0,0,0)',
+              }}
+              onMouseEnter={() => setPrimaryHover(true)}
+              onMouseLeave={() => setPrimaryHover(false)}
+            >
+              Examine the Tech
+            </MagneticButton>
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 });

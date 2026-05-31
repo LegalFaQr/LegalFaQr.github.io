@@ -1,20 +1,21 @@
 import { memo } from 'react';
 import { motion } from 'framer-motion';
 import SectionLabel from './SectionLabel';
+import ScrambleText from './ScrambleText';
 import { revealUp, staggerContainerSlow, viewportConfig } from '../lib/animations';
 
 const convictions = [
   {
-    title: 'Zero Onboarding',
-    text: 'Technology should not require you to learn it. It should see what you see, understand what you need, and do it for you. No skill floor. No manual.',
+    title: 'THE FUTURE, DELIVERED',
+    text: 'We don\'t build iterations. We build technology that shouldn\'t exist for another decade, and we are delivering it today. The industry hasn\'t even heard of what we are building.',
   },
   {
-    title: 'Absolute Inclusion',
-    text: 'We build for the largest audience possible — not a niche. The same tool, the same experience, for the most technical power user and the complete beginner. No compromise on either side.',
+    title: 'ZERO LEARNING CURVE',
+    text: 'Technology should not require you to learn it. If you have to read a manual, we failed. Our tech sees what you see, understands what you need, and executes it. Period.',
   },
   {
-    title: 'Human First',
-    text: 'Optimistic, futuristic ideas fuel everything we do. The next generation of software should be autonomous, screen-aware, and built to serve the human intent.',
+    title: 'ABSOLUTE ELIGIBILITY',
+    text: 'We build for everyone. Not a niche. The exact same tool, the exact same power, for the highest-tier software engineer and the complete beginner. No compromise on either side.',
   },
 ];
 
@@ -46,26 +47,25 @@ const Vision = memo(function Vision() {
           >
             <SectionLabel>OUR CONVICTION</SectionLabel>
             <h2
-              className="font-black tracking-tighter"
+              className="font-black tracking-tighter uppercase"
               style={{
-                fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+                fontSize: 'clamp(3.5rem, 6vw, 5rem)',
                 letterSpacing: '-0.04em',
-                lineHeight: 1.1,
+                lineHeight: 0.9,
                 color: '#000000',
                 marginTop: '1rem',
               }}
             >
-              Technology<br />should just work.
+              <ScrambleText text="TECH THAT" delay={200} /><br />
+              <ScrambleText text="REQUIRES YOU" delay={500} /><br />
+              <ScrambleText text="NOT TO LEARN IT." delay={800} />
             </h2>
-            <p className="text-[#525252] mt-6 text-lg max-w-sm leading-relaxed">
-              We are stripping away the complexity of modern software. The interface of the future is just your intent.
-            </p>
           </motion.div>
 
           {/* Right column (Scrolls past) */}
           <motion.div
             className="flex flex-col"
-            style={{ gap: '4rem' }}
+            style={{ gap: '6rem' }}
             variants={staggerContainerSlow}
             initial="hidden"
             whileInView="visible"
@@ -75,25 +75,18 @@ const Vision = memo(function Vision() {
               <motion.div
                 key={i}
                 variants={revealUp}
-                className="relative pl-8"
+                className="relative"
               >
-                <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-black/10">
-                  <motion.div 
-                    className="w-[3px] h-8 bg-black -ml-[1px] rounded-full"
-                    initial={{ scaleY: 0 }}
-                    whileInView={{ scaleY: 1 }}
-                    viewport={viewportConfig}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                  />
-                </div>
-                <h3 className="text-2xl font-bold tracking-tight text-black mb-3">
+                <div className="w-16 h-[2px] bg-black mb-6" />
+                <h3 className="text-3xl font-black tracking-tighter text-black mb-4 uppercase">
                   {item.title}
                 </h3>
                 <p
+                  className="font-medium"
                   style={{
-                    fontSize: '1.125rem',
-                    lineHeight: 1.7,
-                    color: '#525252',
+                    fontSize: '1.25rem',
+                    lineHeight: 1.6,
+                    color: '#000000',
                   }}
                 >
                   {item.text}
