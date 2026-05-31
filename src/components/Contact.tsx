@@ -33,10 +33,10 @@ const Contact = memo(function Contact() {
               className="text-link font-medium transition-colors duration-200"
               style={{
                 fontSize: '1.125rem',
-                color: '#ffffff',
+                color: '#000000',
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = '#ffffff'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = '#ffffff'; }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = '#000000'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = '#000000'; }}
             >
               shadovis.me
             </a>
@@ -45,10 +45,10 @@ const Contact = memo(function Contact() {
               className="text-link transition-colors duration-200"
               style={{
                 fontSize: '1.125rem',
-                color: '#a3a3a3',
+                color: '#737373',
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = '#ffffff'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = '#a3a3a3'; }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = '#000000'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = '#737373'; }}
             >
               support@shadovis.tech
             </a>
@@ -59,7 +59,7 @@ const Contact = memo(function Contact() {
         <div
           style={{
             height: '1px',
-            backgroundColor: 'rgba(255,255,255,0.04)',
+            backgroundColor: 'rgba(0,0,0,0.04)',
             marginTop: '3rem',
           }}
         />
@@ -78,7 +78,7 @@ const Contact = memo(function Contact() {
           <p
             style={{
               fontSize: '0.75rem',
-              color: '#5a5a6e',
+              color: '#737373',
               letterSpacing: '0.02em',
             }}
           >

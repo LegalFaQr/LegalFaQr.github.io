@@ -51,10 +51,10 @@ const Navigation = memo(function Navigation({ activeSection }: { activeSection: 
         style={{
           zIndex: 100,
           height: '64px',
-          backgroundColor: isScrolled ? 'rgba(0,0,0,0.85)' : 'transparent',
+          backgroundColor: isScrolled ? 'rgba(255,255,255,0.85)' : 'transparent',
           backdropFilter: isScrolled ? 'blur(20px) saturate(180%)' : 'none',
           WebkitBackdropFilter: isScrolled ? 'blur(20px) saturate(180%)' : 'none',
-          borderBottom: isScrolled ? '1px solid rgba(255,255,255,0.05)' : '1px solid transparent',
+          borderBottom: isScrolled ? '1px solid rgba(0,0,0,0.05)' : '1px solid transparent',
         }}
         animate={{
           y: isVisible ? 0 : -64,
@@ -68,7 +68,7 @@ const Navigation = memo(function Navigation({ activeSection }: { activeSection: 
               src="/logo.png"
               alt="Shadovis Technologies"
               className="h-7 w-auto"
-              style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
+              style={{ filter: 'invert(1)', mixBlendMode: 'multiply' }}
             />
           </button>
 
@@ -82,13 +82,13 @@ const Navigation = memo(function Navigation({ activeSection }: { activeSection: 
                 style={{
                   fontSize: '0.875rem',
                   letterSpacing: '0.02em',
-                  color: activeSection === item.target ? '#f0f0f5' : '#8a8a9a',
+                  color: activeSection === item.target ? '#000000' : '#737373',
                   background: 'none',
                   border: 'none',
                   fontWeight: 400,
                 }}
-                onMouseEnter={(e) => { if (activeSection !== item.target) e.currentTarget.style.color = '#f0f0f5'; }}
-                onMouseLeave={(e) => { if (activeSection !== item.target) e.currentTarget.style.color = '#8a8a9a'; }}
+                onMouseEnter={(e) => { if (activeSection !== item.target) e.currentTarget.style.color = '#000000'; }}
+                onMouseLeave={(e) => { if (activeSection !== item.target) e.currentTarget.style.color = '#737373'; }}
               >
                 {item.label}
                 {/* Active indicator dot */}
@@ -101,7 +101,7 @@ const Navigation = memo(function Navigation({ activeSection }: { activeSection: 
                       width: '4px',
                       height: '4px',
                       borderRadius: '50%',
-                      backgroundColor: '#ffffff',
+                      backgroundColor: '#000000',
                     }}
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
@@ -120,18 +120,18 @@ const Navigation = memo(function Navigation({ activeSection }: { activeSection: 
             <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
               <motion.line
                 x1="0" y1="1" x2="22" y2="1"
-                stroke="#f0f0f5" strokeWidth="1.5"
+                stroke="#000000" strokeWidth="1.5"
                 animate={mobileOpen ? { rotate: 45, y: 7, x: 0 } : { rotate: 0, y: 0, x: 0 }}
                 style={{ transformOrigin: 'center' }}
               />
               <motion.line
                 x1="0" y1="8" x2="22" y2="8"
-                stroke="#f0f0f5" strokeWidth="1.5"
+                stroke="#000000" strokeWidth="1.5"
                 animate={{ opacity: mobileOpen ? 0 : 1 }}
               />
               <motion.line
                 x1="0" y1="15" x2="22" y2="15"
-                stroke="#f0f0f5" strokeWidth="1.5"
+                stroke="#000000" strokeWidth="1.5"
                 animate={mobileOpen ? { rotate: -45, y: -7, x: 0 } : { rotate: 0, y: 0, x: 0 }}
                 style={{ transformOrigin: 'center' }}
               />
@@ -145,7 +145,7 @@ const Navigation = memo(function Navigation({ activeSection }: { activeSection: 
         {mobileOpen && (
           <motion.div
             className="fixed inset-0 md:hidden flex flex-col items-center justify-center"
-            style={{ zIndex: 99, backgroundColor: '#000000' }}
+            style={{ zIndex: 99, backgroundColor: '#ffffff' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

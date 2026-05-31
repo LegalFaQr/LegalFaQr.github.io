@@ -40,7 +40,7 @@ const Vision = memo(function Vision() {
                 fontSize: 'clamp(1.75rem, 3.5vw, 2.25rem)',
                 letterSpacing: '-0.02em',
                 lineHeight: 1.25,
-                color: '#f0f0f5',
+                color: '#000000',
                 marginTop: '1rem',
               }}
             >
@@ -62,7 +62,7 @@ const Vision = memo(function Vision() {
                 key={i}
                 variants={revealUp}
                 style={{
-                  borderLeft: '2px solid #ffffff',
+                  borderLeft: '2px solid #000000',
                   borderRadius: '1px',
                   paddingLeft: '1.5rem',
                 }}
@@ -71,7 +71,7 @@ const Vision = memo(function Vision() {
                   style={{
                     fontSize: '1rem',
                     lineHeight: 1.7,
-                    color: '#8a8a9a',
+                    color: '#525252',
                   }}
                 >
                   {text}

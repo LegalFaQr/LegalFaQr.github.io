@@ -52,7 +52,7 @@ const Hero = memo(function Hero() {
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,0,0,0.03) 0%, transparent 70%)',
         }}
         aria-hidden="true"
       />
@@ -64,7 +64,7 @@ const Hero = memo(function Hero() {
           style={{
             fontSize: '0.75rem',
             letterSpacing: '0.08em',
-            color: '#5a5a6e',
+            color: '#737373',
             marginBottom: '2rem',
           }}
           initial={{ opacity: 0 }}
@@ -88,7 +88,7 @@ const Hero = memo(function Hero() {
               className="block overflow-hidden font-bold"
               style={{
                 fontSize: 'clamp(2.5rem, 6.5vw, 4.5rem)',
-                color: '#f0f0f5',
+                color: '#000000',
               }}
               initial={{ clipPath: 'inset(0 100% 0 0)' }}
               animate={{ clipPath: 'inset(0 0% 0 0)' }}
@@ -97,7 +97,7 @@ const Hero = memo(function Hero() {
               {line.hasAccent ? (
                 <>
                   {'that '}
-                  <em style={{ color: '#ffffff', fontStyle: 'italic' }}>doesn&apos;t</em>
+                  <em style={{ color: '#000000', fontStyle: 'italic' }}>doesn&apos;t</em>
                   {' need'}
                 </>
               ) : (
@@ -112,7 +112,7 @@ const Hero = memo(function Hero() {
           style={{
             fontSize: '1.125rem',
             lineHeight: 1.7,
-            color: '#8a8a9a',
+            color: '#525252',
             maxWidth: '560px',
             marginBottom: '2rem',
           }}
@@ -135,8 +135,8 @@ const Hero = memo(function Hero() {
             onClick={scrollToVision}
             className="inline-flex items-center cursor-pointer font-medium transition-colors duration-200"
             style={{
-              backgroundColor: primaryHover ? '#e5e5e5' : '#ffffff',
-              color: '#000000',
+              backgroundColor: primaryHover ? '#333333' : '#000000',
+              color: '#ffffff',
               padding: '0.75rem 1.5rem',
               borderRadius: '12px',
               fontSize: '0.875rem',
@@ -159,12 +159,12 @@ const Hero = memo(function Hero() {
             className="inline-flex items-center cursor-pointer font-medium transition-all duration-200"
             style={{
               backgroundColor: 'transparent',
-              color: secondaryHover ? '#ffffff' : '#8a8a9a',
+              color: secondaryHover ? '#000000' : '#737373',
               padding: '0.75rem 1.5rem',
               borderRadius: '12px',
               fontSize: '0.875rem',
               letterSpacing: '0.02em',
-              border: secondaryHover ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(255,255,255,0.1)',
+              border: secondaryHover ? '1px solid rgba(0,0,0,0.2)' : '1px solid rgba(0,0,0,0.1)',
             }}
             onMouseEnter={() => setSecondaryHover(true)}
             onMouseLeave={() => setSecondaryHover(false)}

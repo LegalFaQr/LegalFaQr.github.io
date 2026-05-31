@@ -27,7 +27,7 @@ const Preloader = memo(function Preloader({ onComplete }: { onComplete: () => vo
           className="fixed inset-0 flex flex-col items-center justify-center"
           style={{
             zIndex: 10000,
-            backgroundColor: '#000000',
+            backgroundColor: '#ffffff',
           }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
@@ -37,7 +37,7 @@ const Preloader = memo(function Preloader({ onComplete }: { onComplete: () => vo
             src="/logo.png"
             alt="Shadovis"
             className="h-14 w-auto"
-            style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
+            style={{ filter: 'invert(1)', mixBlendMode: 'multiply' }}
           />
 
           {/* Progress bar */}
@@ -46,14 +46,14 @@ const Preloader = memo(function Preloader({ onComplete }: { onComplete: () => vo
             style={{
               width: '120px',
               height: '1px',
-              backgroundColor: 'rgba(255,255,255,0.06)',
+              backgroundColor: 'rgba(0,0,0,0.06)',
             }}
           >
             <div
               style={{
                 width: '100%',
                 height: '100%',
-                backgroundColor: '#ffffff',
+                backgroundColor: '#000000',
                 transformOrigin: 'left',
                 animation: 'progress-fill 1.5s ease-in-out forwards',
               }}

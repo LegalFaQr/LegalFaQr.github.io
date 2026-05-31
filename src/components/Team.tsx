@@ -48,7 +48,7 @@ const Team = memo(function Team() {
             style={{
               fontSize: 'clamp(1.5rem, 3vw, 1.875rem)',
               letterSpacing: '-0.02em',
-              color: '#f0f0f5',
+              color: '#000000',
               marginTop: '1rem',
             }}
           >
@@ -73,23 +73,23 @@ const Team = memo(function Team() {
               variants={scaleIn}
               className="transition-all duration-300"
               style={{
-                backgroundColor: '#0a0a0a',
-                border: '1px solid rgba(255,255,255,0.08)',
-                borderLeft: '2px solid #ffffff',
+                backgroundColor: '#f9f9f9',
+                border: '1px solid rgba(0,0,0,0.08)',
+                borderLeft: '2px solid #000000',
                 borderRadius: '12px',
                 padding: '2rem',
               }}
               whileHover={{
-                borderColor: 'rgba(255,255,255,0.16)',
+                borderColor: 'rgba(0,0,0,0.16)',
                 y: -2,
-                backgroundColor: '#121212',
+                backgroundColor: '#ffffff',
               }}
             >
               <h3
                 className="font-semibold"
                 style={{
                   fontSize: '1.25rem',
-                  color: '#f0f0f5',
+                  color: '#000000',
                 }}
               >
                 {member.name}
@@ -98,7 +98,7 @@ const Team = memo(function Team() {
                 className="font-medium"
                 style={{
                   fontSize: '0.875rem',
-                  color: '#ffffff',
+                  color: '#000000',
                   letterSpacing: '0.02em',
                   marginTop: '0.25rem',
                 }}
@@ -109,7 +109,7 @@ const Team = memo(function Team() {
                 style={{
                   fontSize: '0.875rem',
                   lineHeight: 1.7,
-                  color: '#8a8a9a',
+                  color: '#525252',
                   marginTop: '0.75rem',
                 }}
               >

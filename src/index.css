@@ -5,31 +5,31 @@
    ============================================ */
 @theme {
   /* Colors — Background */
-  --color-bg-primary: #000000;
-  --color-bg-secondary: #0a0a0a;
-  --color-bg-tertiary: #121212;
-  --color-bg-elevated: #1a1a1a;
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f9f9f9;
+  --color-bg-tertiary: #f0f0f0;
+  --color-bg-elevated: #ffffff;
 
   /* Colors — Text */
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #a3a3a3;
-  --color-text-tertiary: #737373;
-  --color-text-accent: #ffffff;
+  --color-text-primary: #000000;
+  --color-text-secondary: #525252;
+  --color-text-tertiary: #8a8a9a;
+  --color-text-accent: #000000;
 
   /* Colors — Border */
-  --color-border-subtle: rgba(255, 255, 255, 0.05);
-  --color-border-default: rgba(255, 255, 255, 0.08);
-  --color-border-hover: rgba(255, 255, 255, 0.16);
-  --color-border-accent: rgba(255, 255, 255, 0.25);
+  --color-border-subtle: rgba(0, 0, 0, 0.05);
+  --color-border-default: rgba(0, 0, 0, 0.08);
+  --color-border-hover: rgba(0, 0, 0, 0.16);
+  --color-border-accent: rgba(0, 0, 0, 0.25);
 
   /* Colors — Accent */
-  --color-accent-violet: #ffffff;
-  --color-accent-violet-light: #e5e5e5;
-  --color-accent-violet-dim: rgba(255, 255, 255, 0.08);
-  --color-accent-cyan: #ffffff;
-  --color-accent-cyan-dim: rgba(255, 255, 255, 0.06);
-  --color-accent-green: #ffffff;
-  --color-accent-green-dim: rgba(255, 255, 255, 0.06);
+  --color-accent-violet: #000000;
+  --color-accent-violet-light: #525252;
+  --color-accent-violet-dim: rgba(0, 0, 0, 0.05);
+  --color-accent-cyan: #000000;
+  --color-accent-cyan-dim: rgba(0, 0, 0, 0.04);
+  --color-accent-green: #000000;
+  --color-accent-green-dim: rgba(0, 0, 0, 0.04);
 
   /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -57,9 +57,9 @@
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-elevated: 0 4px 8px rgba(0, 0, 0, 0.5), 0 12px 40px rgba(0, 0, 0, 0.5);
-  --shadow-glow-violet: 0 0 40px rgba(255, 255, 255, 0.04);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.05), 0 8px 32px rgba(0, 0, 0, 0.05);
+  --shadow-elevated: 0 4px 12px rgba(0, 0, 0, 0.08), 0 16px 48px rgba(0, 0, 0, 0.1);
+  --shadow-glow-violet: 0 0 40px rgba(0, 0, 0, 0.03);
 }
 
 /* ============================================
@@ -99,11 +99,11 @@
     background: var(--color-bg-primary);
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.15);
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.25);
   }
 }
 

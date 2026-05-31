@@ -4,10 +4,10 @@ import SectionLabel from './SectionLabel';
 import { scaleIn, staggerContainerFast, revealUp, viewportConfig } from '../lib/animations';
 
 const featurePills = [
-  { label: 'GPU-Pixel Awareness', color: '#ffffff', bg: 'rgba(255,255,255,0.08)' },
-  { label: 'Autonomous Execution', color: '#ffffff', bg: 'rgba(255,255,255,0.08)' },
-  { label: 'Offline Mode', color: '#ffffff', bg: 'rgba(255,255,255,0.08)' },
-  { label: 'Self-Correcting', color: '#ffffff', bg: 'rgba(255,255,255,0.08)' },
+  { label: 'GPU-Pixel Awareness', color: '#000000', bg: 'rgba(0,0,0,0.05)' },
+  { label: 'Autonomous Execution', color: '#000000', bg: 'rgba(0,0,0,0.05)' },
+  { label: 'Offline Mode', color: '#000000', bg: 'rgba(0,0,0,0.05)' },
+  { label: 'Self-Correcting', color: '#000000', bg: 'rgba(0,0,0,0.05)' },
 ];
 
 const Products = memo(function Products() {
@@ -34,7 +34,7 @@ const Products = memo(function Products() {
             style={{
               fontSize: 'clamp(1.5rem, 3vw, 1.875rem)',
               letterSpacing: '-0.02em',
-              color: '#f0f0f5',
+              color: '#000000',
               marginTop: '1rem',
             }}
           >
@@ -43,7 +43,7 @@ const Products = memo(function Products() {
           <p
             style={{
               fontSize: '0.875rem',
-              color: '#5a5a6e',
+              color: '#737373',
               marginTop: '0.5rem',
             }}
           >
@@ -56,8 +56,8 @@ const Products = memo(function Products() {
           className="mx-auto group transition-all duration-300"
           style={{
             maxWidth: '800px',
-            backgroundColor: '#0a0a0a',
-            border: '1px solid rgba(255,255,255,0.08)',
+            backgroundColor: '#f9f9f9',
+            border: '1px solid rgba(0,0,0,0.08)',
             borderRadius: '16px',
             padding: 'clamp(1.5rem, 4vw, 2.5rem)',
           }}
@@ -66,9 +66,9 @@ const Products = memo(function Products() {
           whileInView="visible"
           viewport={viewportConfig}
           whileHover={{
-            borderColor: 'rgba(255,255,255,0.16)',
+            borderColor: 'rgba(0,0,0,0.16)',
             y: -2,
-            backgroundColor: '#121212',
+            backgroundColor: '#ffffff',
           }}
         >
           {/* Top row: badge + status */}
@@ -77,8 +77,8 @@ const Products = memo(function Products() {
               style={{
                 fontSize: '0.75rem',
                 letterSpacing: '0.08em',
-                color: '#ffffff',
-                border: '1px solid rgba(255,255,255,0.15)',
+                color: '#000000',
+                border: '1px solid rgba(0,0,0,0.15)',
                 borderRadius: '9999px',
                 padding: '0.25rem 0.75rem',
                 fontWeight: 500,
@@ -92,11 +92,11 @@ const Products = memo(function Products() {
                   width: '8px',
                   height: '8px',
                   borderRadius: '50%',
-                  backgroundColor: '#ffffff',
+                  backgroundColor: '#000000',
                   display: 'inline-block',
                 }}
               />
-              <span style={{ fontSize: '0.75rem', color: '#a3a3a3' }}>
+              <span style={{ fontSize: '0.75rem', color: '#737373' }}>
                 In Development
               </span>
             </div>
@@ -108,7 +108,7 @@ const Products = memo(function Products() {
             style={{
               fontSize: 'clamp(2.5rem, 5vw, 3rem)',
               letterSpacing: '-0.03em',
-              color: '#f0f0f5',
+              color: '#000000',
               marginTop: '1.5rem',
             }}
           >
@@ -119,7 +119,7 @@ const Products = memo(function Products() {
           <p
             style={{
               fontSize: '1.25rem',
-              color: '#8a8a9a',
+              color: '#525252',
               marginTop: '0.75rem',
             }}
           >
@@ -131,7 +131,7 @@ const Products = memo(function Products() {
             style={{
               fontSize: '1rem',
               lineHeight: 1.7,
-              color: '#8a8a9a',
+              color: '#525252',
               marginTop: '1.25rem',
               maxWidth: '600px',
             }}
@@ -171,7 +171,7 @@ const Products = memo(function Products() {
             className="italic"
             style={{
               fontSize: '0.75rem',
-              color: '#5a5a6e',
+              color: '#737373',
               marginTop: '2rem',
               textAlign: 'right',
             }}
