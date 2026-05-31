@@ -40,20 +40,21 @@ const Hero = memo(function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease }}
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-black/60 animate-ping" />
-          <span className="text-sm font-medium tracking-[0.2em] text-black/60 uppercase">
+          <span className="w-2.5 h-2.5 rounded-full bg-white animate-ping" />
+          <span className="text-sm font-bold tracking-[0.2em] text-white uppercase">
             <ScrambleText text="SHADOVIS TECHNOLOGIES" delay={300} />
           </span>
         </motion.div>
 
         {/* Massive Headline */}
         <h1
-          className="font-light text-left md:text-center leading-[1] tracking-tight"
+          className="font-black uppercase text-left md:text-center leading-[0.85] tracking-tighter"
           style={{
-            fontSize: 'clamp(4rem, 10vw, 9rem)',
-            color: '#171717',
+            fontSize: 'clamp(4.5rem, 12vw, 11rem)',
+            color: '#ffffff',
             marginBottom: '2rem',
-            textShadow: '0 4px 24px rgba(255,255,255,0.5)',
+            marginLeft: '-0.04em',
+            textShadow: '0 8px 32px rgba(0,0,0,0.5)',
           }}
         >
           <div className="overflow-hidden">
@@ -69,20 +70,21 @@ const Hero = memo(function Hero() {
         </h1>
 
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mt-12 md:mt-24">
-          {/* Elegant subline */}
+          {/* Brutally confident subline */}
           <motion.p
-            className="font-light text-left"
+            className="font-medium text-left"
             style={{
               fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-              lineHeight: 1.6,
-              color: '#404040',
+              lineHeight: 1.5,
+              color: '#ffffff',
               maxWidth: '540px',
+              letterSpacing: '-0.02em',
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.5, ease }}
           >
-            We build advanced software that the industry hasn't even conceptualized yet. And we make it so intuitive that absolutely anyone can harness it.
+            We build impossible software that the industry hasn't even heard of yet. And we make it so simple that absolutely anyone can use it.
           </motion.p>
 
           {/* CTAs */}
@@ -94,18 +96,16 @@ const Hero = memo(function Hero() {
           >
             <MagneticButton
               onClick={scrollToProducts}
-              className="inline-flex items-center justify-center cursor-pointer font-medium tracking-wide transition-all duration-300"
+              className="inline-flex items-center justify-center cursor-pointer font-bold uppercase tracking-wide transition-all duration-300"
               style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.4)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
-                color: '#171717',
+                backgroundColor: '#ffffff',
+                color: '#000000',
                 padding: '1.25rem 2.5rem',
-                borderRadius: '999px',
+                borderRadius: '0px', // Brutalist square button
                 fontSize: '0.875rem',
-                border: '1px solid rgba(255,255,255,0.6)',
+                border: '1px solid #ffffff',
                 transform: primaryHover ? 'scale(0.96)' : 'scale(1)',
-                boxShadow: primaryHover ? '0px 12px 32px rgba(0,0,0,0.05)' : '0px 4px 12px rgba(0,0,0,0.02)',
+                boxShadow: primaryHover ? '12px 12px 0px rgba(255,255,255,0.1)' : '0px 0px 0px rgba(0,0,0,0)',
               }}
               onMouseEnter={() => setPrimaryHover(true)}
               onMouseLeave={() => setPrimaryHover(false)}

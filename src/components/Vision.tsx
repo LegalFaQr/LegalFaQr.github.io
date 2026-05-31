@@ -47,10 +47,12 @@ const Vision = memo(function Vision() {
           >
             <SectionLabel>OUR CONVICTION</SectionLabel>
             <h2
-              className="font-light tracking-tight uppercase"
+              className="font-black tracking-tighter uppercase"
               style={{
                 fontSize: 'clamp(3.5rem, 6vw, 5rem)',
-                color: '#171717',
+                letterSpacing: '-0.04em',
+                lineHeight: 0.9,
+                color: '#ffffff',
                 marginTop: '1rem',
               }}
             >
@@ -75,16 +77,16 @@ const Vision = memo(function Vision() {
                 variants={revealUp}
                 className="relative"
               >
-                <div className="w-16 h-[1px] bg-[#171717]/20 mb-6" />
-                <h3 className="text-2xl font-medium tracking-tight text-[#171717] mb-4 uppercase">
+                <div className="w-16 h-[2px] bg-white mb-6" />
+                <h3 className="text-3xl font-black tracking-tighter text-white mb-4 uppercase">
                   {item.title}
                 </h3>
                 <p
-                  className="font-light"
+                  className="font-medium"
                   style={{
                     fontSize: '1.25rem',
                     lineHeight: 1.6,
-                    color: '#404040',
+                    color: '#ffffff',
                   }}
                 >
                   {item.text}

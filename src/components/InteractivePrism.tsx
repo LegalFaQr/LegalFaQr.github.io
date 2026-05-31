@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Environment, Float, MeshTransmissionMaterial, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
+import { useMemo } from 'react';
 
 export default function InteractivePrism() {
   const outerRef = useRef<THREE.Mesh>(null);
@@ -31,41 +32,60 @@ export default function InteractivePrism() {
     }
   });
 
+  // Custom shader to force the black logo to be pure white based on alpha
+  const logoMaterial = useMemo(() => new THREE.ShaderMaterial({
+    uniforms: { tDiffuse: { value: logoTexture } },
+    transparent: true,
+    depthTest: false,
+    side: THREE.DoubleSide,
+    vertexShader: `
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `,
+    fragmentShader: `
+      uniform sampler2D tDiffuse;
+      varying vec2 vUv;
+      void main() {
+        vec4 tex = texture2D(tDiffuse, vUv);
+        // Assuming the black parts of the logo have high alpha
+        if (tex.a < 0.1) discard;
+        gl_FragColor = vec4(1.0, 1.0, 1.0, tex.a);
+      }
+    `
+  }), [logoTexture]);
+
   return (
     <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
       
       {/* The Floating Shadovis Logo inside the Prism */}
       <mesh ref={innerRef} position={[0, 0, 0]}>
         <planeGeometry args={[1.2, 1.2]} />
-        <meshBasicMaterial 
-          map={logoTexture} 
-          transparent={true} 
-          side={THREE.DoubleSide} 
-          depthTest={false}
-        />
+        <primitive object={logoMaterial} attach="material" />
       </mesh>
 
-      {/* The Refracting Glass PRISM */}
+      {/* The Obsidian PRISM */}
       <mesh ref={outerRef} scale={1.5}>
-        {/* Octahedron looks like a beautiful diamond/prism */}
         <octahedronGeometry args={[1.2, 0]} />
         <MeshTransmissionMaterial
           backside={true}
           samples={4}
-          thickness={0.5}
-          roughness={0.05}
+          thickness={0.8}
+          roughness={0.15}
           transmission={1}
-          ior={1.5}
-          chromaticAberration={0.06}
-          anisotropy={0.1}
-          color="#ffffff"
+          ior={1.8}
+          chromaticAberration={0.1}
+          anisotropy={0.3}
+          color="#111111"
         />
       </mesh>
       
-      {/* Studio lighting for glass refractions */}
-      <ambientLight intensity={1} />
-      <directionalLight position={[10, 10, 5]} intensity={2} color="#ffffff" />
-      <directionalLight position={[-10, -10, -5]} intensity={1} color="#ffffff" />
+      {/* Dramatic lighting for dark obsidian */}
+      <ambientLight intensity={0.2} />
+      <directionalLight position={[10, 10, 5]} intensity={4} color="#ffffff" />
+      <directionalLight position={[-10, -10, -5]} intensity={2} color="#ffffff" />
       <Environment preset="studio" />
     </Float>
   );

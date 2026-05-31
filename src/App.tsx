@@ -2,7 +2,6 @@ import { useState, useCallback, useEffect } from 'react';
 import { useLenis } from './hooks/useLenis';
 import { audioManager } from './lib/AudioManager';
 import Preloader from './components/Preloader';
-import AuroraBackground from './components/AuroraBackground';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import Vision from './components/Vision';
@@ -38,7 +37,6 @@ export default function App() {
     <>
       <CustomCursor />
       <Preloader onComplete={handlePreloaderComplete} />
-      <AuroraBackground />
 
       {loaded && (
         <>

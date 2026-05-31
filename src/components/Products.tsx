@@ -72,7 +72,7 @@ const Products = memo(function Products() {
               className="font-black tracking-tighter uppercase"
               style={{
                 fontSize: 'clamp(3rem, 6vw, 6rem)',
-                color: '#000000',
+                color: '#ffffff',
                 marginTop: '1rem',
                 lineHeight: 0.9,
               }}
@@ -86,7 +86,7 @@ const Products = memo(function Products() {
             className="font-medium max-w-sm"
             style={{
               fontSize: '1.125rem',
-              color: '#000000',
+              color: '#ffffff',
               lineHeight: 1.5,
             }}
           >
@@ -107,15 +107,11 @@ const Products = memo(function Products() {
           <motion.div
             variants={scaleIn}
             onMouseEnter={() => audioManager.playHum()}
-            className="bento-card group relative overflow-hidden flex flex-col justify-between cursor-default"
+            className="bento-card group relative overflow-hidden bg-[#111111] lg:col-span-2 flex flex-col justify-between cursor-default"
             style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.4)',
-              backdropFilter: 'blur(24px)',
-              WebkitBackdropFilter: 'blur(24px)',
-              borderRadius: '24px',
-              border: '1px solid rgba(255,255,255,0.6)',
+              borderRadius: '0px',
+              border: '1px solid #333333',
               padding: 'clamp(2.5rem, 5vw, 4rem)',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.05)',
             }}
           >
             {/* Spotlight pseudo-element */}
@@ -129,12 +125,12 @@ const Products = memo(function Products() {
             
             {/* Top row: badge + status */}
             <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 mb-16">
-              <span className="text-[12px] font-medium tracking-[0.2em] text-[#171717] border border-[#171717]/20 px-4 py-1.5 uppercase rounded-full">
+              <span className="text-[12px] font-bold tracking-[0.2em] text-white border border-white/20 px-4 py-1.5 uppercase">
                 CODENAME
               </span>
               <div className="flex items-center gap-3">
-                <span className="w-2 h-2 bg-blue-500 animate-pulse rounded-full" />
-                <span className="text-[12px] font-medium tracking-[0.2em] text-[#171717] uppercase">
+                <span className="w-2 h-2 bg-red-500 animate-pulse" />
+                <span className="text-[12px] font-bold tracking-[0.2em] text-white uppercase">
                   Classified / In Development
                 </span>
               </div>
@@ -142,10 +138,10 @@ const Products = memo(function Products() {
 
             <div className="relative z-10">
               <h3
-                className="font-light tracking-tight uppercase"
+                className="font-black tracking-tighter uppercase"
                 style={{
                   fontSize: 'clamp(4rem, 8vw, 7rem)',
-                  color: '#171717',
+                  color: '#ffffff',
                   lineHeight: 0.85,
                   marginBottom: '2rem',
                 }}
@@ -153,12 +149,13 @@ const Products = memo(function Products() {
                 PRISM
               </h3>
               <p
-                className="font-light"
+                className="font-medium"
                 style={{
                   fontSize: 'clamp(1.25rem, 2vw, 1.75rem)',
-                  color: '#404040',
+                  color: '#ffffff',
                   lineHeight: 1.4,
                   maxWidth: '700px',
+                  letterSpacing: '-0.02em',
                 }}
               >
                 The world's first and only AI agentic app that functions entirely offline. It sees your screen, understands your intent, and executes multi-step tasks across any software. No API. No internet. Just pure, autonomous execution.
@@ -173,15 +170,11 @@ const Products = memo(function Products() {
                 key={i}
                 variants={scaleIn}
                 onMouseEnter={() => audioManager.playHum()}
-                className="bento-card relative flex flex-col justify-between group flex-1 cursor-default overflow-hidden"
+                className="bento-card relative bg-[#111111] flex flex-col justify-between group flex-1 cursor-default overflow-hidden"
                 style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.4)',
-                  backdropFilter: 'blur(24px)',
-                  WebkitBackdropFilter: 'blur(24px)',
-                  borderRadius: '24px',
-                  border: '1px solid rgba(255,255,255,0.6)',
+                  borderRadius: '0px',
+                  border: '1px solid #333333',
                   padding: '2.5rem',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.05)',
                 }}
               >
                 <div 
@@ -192,15 +185,15 @@ const Products = memo(function Products() {
                   }}
                 />
                 <div 
-                  className="relative z-10 w-12 h-12 bg-white/50 backdrop-blur-md rounded-full flex items-center justify-center text-[#171717] mb-6 group-hover:scale-110 transition-transform duration-300"
+                  className="relative z-10 w-12 h-12 bg-[#222222] border border-[#333333] flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300"
                 >
                   {feature.icon}
                 </div>
                 <div className="relative z-10">
-                  <h4 className="text-xl font-medium tracking-tight text-[#171717] mb-3 uppercase">
+                  <h4 className="text-xl font-black tracking-tight text-white mb-3 uppercase">
                     {feature.title}
                   </h4>
-                  <p className="text-base text-[#404040] font-light leading-relaxed">
+                  <p className="text-base text-white/70 font-medium leading-relaxed">
                     {feature.desc}
                   </p>
                 </div>

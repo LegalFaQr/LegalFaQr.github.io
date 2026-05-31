@@ -83,7 +83,7 @@ const Contact = memo(function Contact() {
           style={{
             fontSize: 'clamp(4rem, 15vw, 24rem)',
             lineHeight: 0.8,
-            color: '#000000',
+            color: '#ffffff',
             opacity: 0.04,
             filter: 'url(#glitch-filter)',
           }}
