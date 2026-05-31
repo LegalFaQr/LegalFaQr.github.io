@@ -1,5 +1,5 @@
 import { useState, memo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import MagneticButton from './MagneticButton';
 import { getLenis } from '../hooks/useLenis';
 
@@ -14,6 +14,9 @@ const headingLines = [
 const Hero = memo(function Hero() {
   const [primaryHover, setPrimaryHover] = useState(false);
   const [secondaryHover, setSecondaryHover] = useState(false);
+  
+  const { scrollY } = useScroll();
+  const backgroundY = useTransform(scrollY, [0, 1000], ['0%', '15%']);
 
   const scrollToVision = () => {
     const lenis = getLenis();
@@ -33,9 +36,10 @@ const Hero = memo(function Hero() {
       }}
     >
       {/* Dot matrix background pattern */}
-      <div
+      <motion.div
         className="pointer-events-none absolute inset-0 opacity-[0.15]"
         style={{
+          y: backgroundY,
           backgroundImage: 'radial-gradient(#000000 1px, transparent 1px)',
           backgroundSize: '24px 24px',
           maskImage: 'linear-gradient(to bottom, black 20%, transparent 80%)',

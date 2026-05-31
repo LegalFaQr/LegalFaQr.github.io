@@ -1,17 +1,31 @@
-import { memo } from 'react';
-import { motion } from 'framer-motion';
+import { memo, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import SectionLabel from './SectionLabel';
 import { revealUp, viewportConfig } from '../lib/animations';
 
 const Contact = memo(function Contact() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"]
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8, 1], [0, 0.5, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
+
   return (
     <section
       id="contact"
+      ref={containerRef}
+      className="relative overflow-hidden"
       style={{
         padding: '8rem 1.5rem 0',
+        backgroundColor: '#ffffff',
       }}
     >
-      <div className="mx-auto" style={{ maxWidth: '1200px' }}>
+      <div className="mx-auto flex flex-col items-center" style={{ maxWidth: '1200px', zIndex: 10, position: 'relative' }}>
         {/* Contact section */}
         <motion.div
           className="text-center"
@@ -24,15 +38,14 @@ const Contact = memo(function Contact() {
 
           <div
             className="flex flex-col items-center"
-            style={{ gap: '0.5rem', marginTop: '1.5rem' }}
+            style={{ gap: '1rem', marginTop: '2rem' }}
           >
             <a
               href="https://shadovis.me"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-link font-medium transition-colors duration-200"
+              className="text-2xl font-bold tracking-tight transition-colors duration-300"
               style={{
-                fontSize: '1.125rem',
                 color: '#000000',
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = '#000000'; }}
@@ -42,49 +55,54 @@ const Contact = memo(function Contact() {
             </a>
             <a
               href="mailto:support@shadovis.tech"
-              className="text-link transition-colors duration-200"
+              className="text-lg font-medium transition-colors duration-300"
               style={{
-                fontSize: '1.125rem',
-                color: '#737373',
+                color: '#525252',
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = '#000000'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = '#737373'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = '#525252'; }}
             >
               support@shadovis.tech
             </a>
           </div>
         </motion.div>
+      </div>
 
-        {/* Divider */}
-        <div
+      {/* Massive Scaling Footer Typography */}
+      <motion.div 
+        className="w-full flex justify-center mt-24 pb-8 select-none pointer-events-none"
+        style={{
+          scale,
+          opacity,
+          y,
+          transformOrigin: 'bottom center'
+        }}
+      >
+        <h1 
+          className="font-black tracking-tighter text-center"
           style={{
-            height: '1px',
-            backgroundColor: 'rgba(0,0,0,0.04)',
-            marginTop: '3rem',
+            fontSize: 'clamp(4rem, 15vw, 24rem)',
+            lineHeight: 0.8,
+            color: '#000000',
+            opacity: 0.04,
           }}
-        />
-
-        {/* Footer */}
-        <motion.footer
-          className="text-center"
-          style={{
-            padding: '2rem 0 4rem',
-          }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={viewportConfig}
-          transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <p
-            style={{
-              fontSize: '0.75rem',
-              color: '#737373',
-              letterSpacing: '0.02em',
-            }}
-          >
-            © 2026 Shadovis Technologies Pvt. Ltd. · Punjab, India
-          </p>
-        </motion.footer>
+          SHADOVIS
+        </h1>
+      </motion.div>
+
+      {/* Actual Footer */}
+      <div className="absolute bottom-6 w-full flex justify-center z-20">
+        <p
+          style={{
+            fontSize: '0.75rem',
+            color: '#737373',
+            letterSpacing: '0.02em',
+            fontWeight: 500,
+          }}
+        >
+          © 2026 Shadovis Technologies Pvt. Ltd. · Punjab, India
+        </p>
       </div>
     </section>
   );

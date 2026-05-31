@@ -45,6 +45,17 @@ const features = [
 ];
 
 const Products = memo(function Products() {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const cards = document.getElementsByClassName('bento-card');
+    for (const card of cards) {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      (card as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
+      (card as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
+    }
+  };
+
   return (
     <section
       id="products"
@@ -85,11 +96,12 @@ const Products = memo(function Products() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
+          onMouseMove={handleMouseMove}
         >
           {/* Main PRISM Card (Spans 2 columns) */}
           <motion.div
             variants={scaleIn}
-            className="group relative overflow-hidden bg-white md:col-span-2 lg:col-span-2 flex flex-col justify-between"
+            className="bento-card group relative overflow-hidden bg-white md:col-span-2 lg:col-span-2 flex flex-col justify-between"
             style={{
               border: '1px solid rgba(0,0,0,0.06)',
               borderRadius: '24px',
@@ -97,8 +109,17 @@ const Products = memo(function Products() {
               boxShadow: '0 4px 24px rgba(0,0,0,0.02)',
             }}
           >
+            {/* Spotlight pseudo-element via inline styles */}
+            <div 
+              className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
+              style={{
+                background: 'radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(0,0,0,0.04), transparent 40%)',
+                zIndex: 0,
+              }}
+            />
+            
             {/* Top row: badge + status */}
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-12">
+            <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 mb-12">
               <span className="text-[10px] font-bold tracking-widest text-black/40 border border-black/10 px-3 py-1 rounded-full uppercase">
                 CODENAME
               </span>
@@ -110,7 +131,7 @@ const Products = memo(function Products() {
               </div>
             </div>
 
-            <div>
+            <div className="relative z-10">
               <h3
                 className="font-black tracking-tighter"
                 style={{
@@ -148,7 +169,7 @@ const Products = memo(function Products() {
             <motion.div
               key={i}
               variants={scaleIn}
-              className="bg-white flex flex-col justify-between group hover:-translate-y-1 transition-transform duration-300"
+              className="bento-card relative bg-white flex flex-col justify-between group hover:-translate-y-1 transition-transform duration-300 overflow-hidden"
               style={{
                 border: '1px solid rgba(0,0,0,0.06)',
                 borderRadius: '24px',
@@ -157,11 +178,18 @@ const Products = memo(function Products() {
               }}
             >
               <div 
-                className="w-12 h-12 rounded-full bg-black/5 flex items-center justify-center text-black/70 mb-6 group-hover:bg-black group-hover:text-white transition-colors duration-300"
+                className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
+                style={{
+                  background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(0,0,0,0.03), transparent 40%)',
+                  zIndex: 0,
+                }}
+              />
+              <div 
+                className="relative z-10 w-12 h-12 rounded-full bg-black/5 flex items-center justify-center text-black/70 mb-6 group-hover:bg-black group-hover:text-white transition-colors duration-300"
               >
                 {feature.icon}
               </div>
-              <div>
+              <div className="relative z-10">
                 <h4 className="text-lg font-bold tracking-tight text-black mb-2">
                   {feature.title}
                 </h4>

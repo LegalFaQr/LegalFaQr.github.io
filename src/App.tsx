@@ -8,6 +8,7 @@ import Vision from './components/Vision';
 import Products from './components/Products';
 import Team from './components/Team';
 import Contact from './components/Contact';
+import CustomCursor from './components/CustomCursor';
 
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
 
   return (
     <>
+      <CustomCursor />
       <Preloader onComplete={handlePreloaderComplete} />
       <GrainOverlay />
 
