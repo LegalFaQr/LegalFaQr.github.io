@@ -7,9 +7,11 @@ interface MagneticButtonProps {
   onClick?: () => void;
   href?: string;
   style?: React.CSSProperties;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
-export default function MagneticButton({ children, className = '', onClick, href, style }: MagneticButtonProps) {
+export default function MagneticButton({ children, className = '', onClick, href, style, onMouseEnter, onMouseLeave }: MagneticButtonProps) {
   const rawX = useMotionValue(0);
   const rawY = useMotionValue(0);
   const x = useSpring(rawX, { stiffness: 300, damping: 15 });
@@ -32,9 +34,10 @@ export default function MagneticButton({ children, className = '', onClick, href
     }
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseLeaveInternal = () => {
     rawX.set(0);
     rawY.set(0);
+    if (onMouseLeave) onMouseLeave();
   };
 
   const Tag = href ? 'a' : 'button';
@@ -52,7 +55,8 @@ export default function MagneticButton({ children, className = '', onClick, href
         href={href}
         style={style}
         onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={handleMouseLeaveInternal}
       >
         {children}
       </Tag>
