@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import MagneticButton from './MagneticButton';
 import ScrambleText from './ScrambleText';
 import { Canvas } from '@react-three/fiber';
-import IntelligentSphere from './IntelligentSphere';
+import InteractivePrism from './InteractivePrism';
 import { getLenis } from '../hooks/useLenis';
 
 const ease: [number, number, number, number] = [0.16, 1, 0.3, 1]; 
@@ -24,10 +24,10 @@ const Hero = memo(function Hero() {
     <section
       className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pt-24"
     >
-      {/* Interactive 3D WebGL Canvas */}
+      {/* Interactive 3D Glass Prism */}
       <div className="absolute inset-0 z-0">
         <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-          <IntelligentSphere />
+          <InteractivePrism />
         </Canvas>
       </div>
 
