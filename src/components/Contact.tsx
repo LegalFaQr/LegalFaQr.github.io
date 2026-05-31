@@ -79,12 +79,13 @@ const Contact = memo(function Contact() {
         }}
       >
         <h1 
-          className="font-black tracking-tighter text-center"
+          className="font-black tracking-tighter text-center transition-[filter] duration-700"
           style={{
             fontSize: 'clamp(4rem, 15vw, 24rem)',
             lineHeight: 0.8,
             color: '#000000',
             opacity: 0.04,
+            filter: 'url(#glitch-filter)',
           }}
         >
           SHADOVIS
@@ -104,6 +105,54 @@ const Contact = memo(function Contact() {
           © 2026 Shadovis Technologies Pvt. Ltd. · Punjab, India
         </p>
       </div>
+
+      {/* SVG Displacement Filter */}
+      <svg style={{ display: 'none' }}>
+        <defs>
+          <filter id="glitch-filter">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.00001 0.00001"
+              numOctaves="1"
+              result="warp"
+            >
+              <animate
+                attributeName="baseFrequency"
+                from="0.00001 0.00001"
+                to="0.05 0.1"
+                dur="1s"
+                repeatCount="indefinite"
+                begin="contact.mouseenter"
+                end="contact.mouseleave"
+              />
+            </feTurbulence>
+            <feDisplacementMap
+              xChannelSelector="R"
+              yChannelSelector="G"
+              scale="0"
+              in="SourceGraphic"
+              in2="warp"
+            >
+              <animate
+                attributeName="scale"
+                from="0"
+                to="50"
+                dur="0.5s"
+                fill="freeze"
+                begin="contact.mouseenter"
+              />
+              <animate
+                attributeName="scale"
+                from="50"
+                to="0"
+                dur="0.5s"
+                fill="freeze"
+                begin="contact.mouseleave"
+              />
+            </feDisplacementMap>
+          </filter>
+        </defs>
+      </svg>
     </section>
   );
 });

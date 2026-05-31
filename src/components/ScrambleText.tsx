@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { audioManager } from '../lib/AudioManager';
 
 const CHARACTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+<>?/[]{}';
 
@@ -35,6 +36,11 @@ export default function ScrambleText({ text, className = '', delay = 0 }: Scramb
 
         // Increase iteration slowly so the scramble lasts a bit
         iteration += 1 / 3;
+        
+        // Play tick sound every few frames
+        if (Math.random() > 0.7) {
+          audioManager.playTick();
+        }
 
         if (iteration < text.length) {
           frameId = requestAnimationFrame(animate);

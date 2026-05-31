@@ -1,7 +1,8 @@
 import { useState, memo } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import MagneticButton from './MagneticButton';
 import ScrambleText from './ScrambleText';
+import NeuralCanvas from './NeuralCanvas';
 import { getLenis } from '../hooks/useLenis';
 
 const ease: [number, number, number, number] = [0.16, 1, 0.3, 1]; 
@@ -9,8 +10,7 @@ const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 const Hero = memo(function Hero() {
   const [primaryHover, setPrimaryHover] = useState(false);
   
-  const { scrollY } = useScroll();
-  const backgroundY = useTransform(scrollY, [0, 1000], ['0%', '20%']);
+
 
   const scrollToProducts = () => {
     const lenis = getLenis();
@@ -26,18 +26,8 @@ const Hero = memo(function Hero() {
         backgroundColor: '#ffffff',
       }}
     >
-      {/* Dot matrix background pattern with deeper parallax */}
-      <motion.div
-        className="pointer-events-none absolute inset-0 opacity-[0.2]"
-        style={{
-          y: backgroundY,
-          backgroundImage: 'radial-gradient(#000000 1px, transparent 1px)',
-          backgroundSize: '32px 32px',
-          maskImage: 'linear-gradient(to bottom, black 30%, transparent 90%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, black 30%, transparent 90%)',
-        }}
-        aria-hidden="true"
-      />
+      {/* Interactive Neural Canvas */}
+      <NeuralCanvas />
 
       <div className="relative mx-auto w-full max-w-[1400px] z-10 flex flex-col justify-center h-full">
         

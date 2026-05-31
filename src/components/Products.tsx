@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { motion } from 'framer-motion';
 import SectionLabel from './SectionLabel';
 import ScrambleText from './ScrambleText';
+import { audioManager } from '../lib/AudioManager';
 import { scaleIn, staggerContainerFast, revealUp, viewportConfig } from '../lib/animations';
 
 const features = [
@@ -105,7 +106,8 @@ const Products = memo(function Products() {
           {/* Main PRISM Card (Spans 2 columns) */}
           <motion.div
             variants={scaleIn}
-            className="bento-card group relative overflow-hidden bg-[#000000] lg:col-span-2 flex flex-col justify-between"
+            onMouseEnter={() => audioManager.playHum()}
+            className="bento-card group relative overflow-hidden bg-[#000000] lg:col-span-2 flex flex-col justify-between cursor-default"
             style={{
               borderRadius: '0px', // Brutalist square
               padding: 'clamp(2.5rem, 5vw, 4rem)',
@@ -166,7 +168,8 @@ const Products = memo(function Products() {
               <motion.div
                 key={i}
                 variants={scaleIn}
-                className="bento-card relative bg-white flex flex-col justify-between group flex-1"
+                onMouseEnter={() => audioManager.playHum()}
+                className="bento-card relative bg-white flex flex-col justify-between group flex-1 cursor-default"
                 style={{
                   border: '1px solid rgba(0,0,0,0.1)',
                   padding: '2.5rem',
