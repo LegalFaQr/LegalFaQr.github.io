@@ -2,7 +2,8 @@ import { useState, memo } from 'react';
 import { motion } from 'framer-motion';
 import MagneticButton from './MagneticButton';
 import ScrambleText from './ScrambleText';
-import NeuralCanvas from './NeuralCanvas';
+import { Canvas } from '@react-three/fiber';
+import IntelligentSphere from './IntelligentSphere';
 import { getLenis } from '../hooks/useLenis';
 
 const ease: [number, number, number, number] = [0.16, 1, 0.3, 1]; 
@@ -22,12 +23,13 @@ const Hero = memo(function Hero() {
   return (
     <section
       className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pt-24"
-      style={{
-        backgroundColor: '#ffffff',
-      }}
     >
-      {/* Interactive Neural Canvas */}
-      <NeuralCanvas />
+      {/* Interactive 3D WebGL Canvas */}
+      <div className="absolute inset-0 z-0">
+        <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+          <IntelligentSphere />
+        </Canvas>
+      </div>
 
       <div className="relative mx-auto w-full max-w-[1400px] z-10 flex flex-col justify-center h-full">
         
@@ -38,20 +40,20 @@ const Hero = memo(function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease }}
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-black animate-ping" />
-          <span className="text-sm font-bold tracking-[0.2em] text-black uppercase">
+          <span className="w-2.5 h-2.5 rounded-full bg-black/60 animate-ping" />
+          <span className="text-sm font-medium tracking-[0.2em] text-black/60 uppercase">
             <ScrambleText text="SHADOVIS TECHNOLOGIES" delay={300} />
           </span>
         </motion.div>
 
         {/* Massive Headline */}
         <h1
-          className="font-black uppercase text-left md:text-center leading-[0.85] tracking-tighter"
+          className="font-light text-left md:text-center leading-[1] tracking-tight"
           style={{
-            fontSize: 'clamp(4.5rem, 12vw, 11rem)',
-            color: '#000000',
+            fontSize: 'clamp(4rem, 10vw, 9rem)',
+            color: '#171717',
             marginBottom: '2rem',
-            marginLeft: '-0.04em', // Visual alignment for negative tracking
+            textShadow: '0 4px 24px rgba(255,255,255,0.5)',
           }}
         >
           <div className="overflow-hidden">
@@ -67,21 +69,20 @@ const Hero = memo(function Hero() {
         </h1>
 
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mt-12 md:mt-24">
-          {/* Brutally confident subline */}
+          {/* Elegant subline */}
           <motion.p
-            className="font-medium text-left"
+            className="font-light text-left"
             style={{
               fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-              lineHeight: 1.5,
-              color: '#000000',
+              lineHeight: 1.6,
+              color: '#404040',
               maxWidth: '540px',
-              letterSpacing: '-0.02em',
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.5, ease }}
           >
-            We build impossible software that the industry hasn't even heard of yet. And we make it so simple that absolutely anyone can use it.
+            We build advanced software that the industry hasn't even conceptualized yet. And we make it so intuitive that absolutely anyone can harness it.
           </motion.p>
 
           {/* CTAs */}
@@ -93,16 +94,18 @@ const Hero = memo(function Hero() {
           >
             <MagneticButton
               onClick={scrollToProducts}
-              className="inline-flex items-center justify-center cursor-pointer font-bold uppercase tracking-wide transition-all duration-300"
+              className="inline-flex items-center justify-center cursor-pointer font-medium tracking-wide transition-all duration-300"
               style={{
-                backgroundColor: '#000000',
-                color: '#ffffff',
+                backgroundColor: 'rgba(255, 255, 255, 0.4)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                color: '#171717',
                 padding: '1.25rem 2.5rem',
-                borderRadius: '0px', // Brutalist square button
+                borderRadius: '999px',
                 fontSize: '0.875rem',
-                border: '1px solid #000000',
+                border: '1px solid rgba(255,255,255,0.6)',
                 transform: primaryHover ? 'scale(0.96)' : 'scale(1)',
-                boxShadow: primaryHover ? '12px 12px 0px rgba(0,0,0,0.1)' : '0px 0px 0px rgba(0,0,0,0)',
+                boxShadow: primaryHover ? '0px 12px 32px rgba(0,0,0,0.05)' : '0px 4px 12px rgba(0,0,0,0.02)',
               }}
               onMouseEnter={() => setPrimaryHover(true)}
               onMouseLeave={() => setPrimaryHover(false)}

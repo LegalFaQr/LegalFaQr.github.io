@@ -33,7 +33,7 @@ const Team = memo(function Team() {
       id="team"
       style={{
         padding: '8rem 1.5rem',
-        backgroundColor: '#ffffff',
+        backgroundColor: 'transparent',
       }}
     >
       <div className="mx-auto" style={{ maxWidth: '1400px' }}>
@@ -46,11 +46,10 @@ const Team = memo(function Team() {
         >
           <SectionLabel>THE ARCHITECTS</SectionLabel>
           <h2
-            className="font-black tracking-tighter uppercase"
+            className="font-light tracking-tight uppercase"
             style={{
               fontSize: 'clamp(3rem, 6vw, 5rem)',
-              letterSpacing: '-0.04em',
-              color: '#000000',
+              color: '#171717',
               marginTop: '1rem',
               lineHeight: 1,
             }}
@@ -61,11 +60,11 @@ const Team = memo(function Team() {
         </motion.div>
 
         {/* Typographic List */}
-        <div className="flex flex-col border-t border-black">
+        <div className="flex flex-col border-t border-[#171717]/10">
           {teamMembers.map((member, i) => (
             <motion.div
               key={member.name}
-              className="relative border-b border-black group cursor-default"
+              className="relative border-b border-[#171717]/10 group cursor-default"
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
               initial={{ opacity: 0, y: 20 }}
@@ -74,13 +73,13 @@ const Team = memo(function Team() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <div 
-                className="pointer-events-none absolute inset-0 bg-black origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100"
+                className="pointer-events-none absolute inset-0 bg-white/40 backdrop-blur-md origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100"
                 style={{ zIndex: 0 }}
               />
               
-              <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between py-8 md:py-12 px-4 transition-colors duration-500 group-hover:text-white">
+              <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between py-8 md:py-12 px-4 transition-colors duration-500 group-hover:text-[#171717]">
                 <h3
-                  className="font-black tracking-tighter uppercase m-0 leading-none"
+                  className="font-light tracking-tight uppercase m-0 leading-none"
                   style={{
                     fontSize: 'clamp(2.5rem, 5vw, 6rem)',
                   }}
