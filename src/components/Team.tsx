@@ -30,13 +30,14 @@ const Team = memo(function Team() {
       id="team"
       style={{
         padding: '8rem 1.5rem',
+        backgroundColor: '#ffffff',
       }}
     >
       <div className="mx-auto" style={{ maxWidth: '1200px' }}>
         {/* Section header */}
         <motion.div
           className="text-center"
-          style={{ marginBottom: '3rem' }}
+          style={{ marginBottom: '4rem' }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportConfig}
@@ -44,12 +45,13 @@ const Team = memo(function Team() {
         >
           <SectionLabel>THE TEAM</SectionLabel>
           <h2
-            className="font-bold"
+            className="font-bold tracking-tight"
             style={{
-              fontSize: 'clamp(1.5rem, 3vw, 1.875rem)',
-              letterSpacing: '-0.02em',
+              fontSize: 'clamp(2rem, 4vw, 3rem)',
+              letterSpacing: '-0.04em',
               color: '#000000',
               marginTop: '1rem',
+              lineHeight: 1.1,
             }}
           >
             Three founders. One vision.
@@ -58,9 +60,9 @@ const Team = memo(function Team() {
 
         {/* Team cards */}
         <motion.div
-          className="grid gap-6"
+          className="grid gap-4"
           style={{
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
           }}
           variants={staggerContainer}
           initial="hidden"
@@ -71,46 +73,44 @@ const Team = memo(function Team() {
             <motion.div
               key={member.name}
               variants={scaleIn}
-              className="transition-all duration-300"
+              className="group relative overflow-hidden transition-all duration-300"
               style={{
-                backgroundColor: '#f9f9f9',
-                border: '1px solid rgba(0,0,0,0.08)',
-                borderLeft: '2px solid #000000',
-                borderRadius: '12px',
-                padding: '2rem',
+                backgroundColor: '#ffffff',
+                border: '1px solid rgba(0,0,0,0.1)',
+                padding: '2.5rem',
               }}
               whileHover={{
-                borderColor: 'rgba(0,0,0,0.16)',
-                y: -2,
-                backgroundColor: '#ffffff',
+                y: -4,
+                boxShadow: '8px 8px 0px rgba(0,0,0,1)',
               }}
             >
+              {/* Animated top border line */}
+              <div className="absolute top-0 left-0 h-1 bg-black w-0 group-hover:w-full transition-all duration-500 ease-out" />
+
               <h3
-                className="font-semibold"
+                className="font-black tracking-tight"
                 style={{
-                  fontSize: '1.25rem',
+                  fontSize: '1.5rem',
                   color: '#000000',
                 }}
               >
                 {member.name}
               </h3>
               <p
-                className="font-medium"
+                className="font-bold tracking-wider uppercase text-xs mt-2"
                 style={{
-                  fontSize: '0.875rem',
                   color: '#000000',
-                  letterSpacing: '0.02em',
-                  marginTop: '0.25rem',
+                  opacity: 0.6,
                 }}
               >
                 {member.role}
               </p>
+              <div className="w-8 h-[1px] bg-black/20 my-4" />
               <p
                 style={{
-                  fontSize: '0.875rem',
-                  lineHeight: 1.7,
+                  fontSize: '1rem',
+                  lineHeight: 1.6,
                   color: '#525252',
-                  marginTop: '0.75rem',
                 }}
               >
                 {member.description}

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { useLenis } from './hooks/useLenis';
 import Preloader from './components/Preloader';
 import GrainOverlay from './components/GrainOverlay';
@@ -9,47 +9,14 @@ import Products from './components/Products';
 import Team from './components/Team';
 import Contact from './components/Contact';
 
-const sectionIds = ['hero', 'vision', 'products', 'team', 'contact'];
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
 
   // Initialize Lenis smooth scroll
   useLenis();
 
-  // Track active section via IntersectionObserver
-  useEffect(() => {
-    if (!loaded) return;
-
-    const observers: IntersectionObserver[] = [];
-
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setActiveSection(id);
-            }
-          });
-        },
-        {
-          threshold: 0.3,
-          rootMargin: '-64px 0px 0px 0px',
-        }
-      );
-
-      observer.observe(el);
-      observers.push(observer);
-    });
-
-    return () => {
-      observers.forEach((o) => o.disconnect());
-    };
-  }, [loaded]);
+  // (IntersectionObserver logic was moved directly into Navigation.tsx for better performance)
 
   const handlePreloaderComplete = useCallback(() => {
     setLoaded(true);
@@ -62,7 +29,7 @@ export default function App() {
 
       {loaded && (
         <>
-          <Navigation activeSection={activeSection} />
+          <Navigation />
           <main>
             <Hero />
             <Vision />
