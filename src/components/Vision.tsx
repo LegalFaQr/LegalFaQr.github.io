@@ -52,7 +52,7 @@ const Vision = memo(function Vision() {
                 fontSize: 'clamp(3.5rem, 6vw, 5rem)',
                 letterSpacing: '-0.04em',
                 lineHeight: 0.9,
-                color: '#ffffff',
+                color: '#000000',
                 marginTop: '1rem',
               }}
             >
@@ -77,8 +77,8 @@ const Vision = memo(function Vision() {
                 variants={revealUp}
                 className="relative"
               >
-                <div className="w-16 h-[2px] bg-white mb-6" />
-                <h3 className="text-3xl font-black tracking-tighter text-white mb-4 uppercase">
+                <div className="w-16 h-[2px] bg-[#000000] mb-6" />
+                <h3 className="text-3xl font-black tracking-tighter text-[#000000] mb-4 uppercase">
                   {item.title}
                 </h3>
                 <p
@@ -86,7 +86,7 @@ const Vision = memo(function Vision() {
                   style={{
                     fontSize: '1.25rem',
                     lineHeight: 1.6,
-                    color: '#ffffff',
+                    color: '#000000',
                   }}
                 >
                   {item.text}
