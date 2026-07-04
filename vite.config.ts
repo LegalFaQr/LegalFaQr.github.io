@@ -10,5 +10,6 @@ export default defineConfig({
   build: {
     target: 'es2020',
     cssMinify: true,
+    sourcemap: false, // Security: never expose source maps in production
   },
 })

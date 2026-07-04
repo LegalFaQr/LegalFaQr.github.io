@@ -1,3 +1,9 @@
+// Typed interface for vendor-prefixed AudioContext (Safari/older browsers)
+// Avoids unsafe `as any` cast — closes VUL-007
+interface WindowWithWebkitAudio extends Window {
+  webkitAudioContext?: typeof AudioContext;
+}
+
 class AudioManager {
   private ctx: AudioContext | null = null;
   private isInitialized = false;
@@ -5,7 +11,9 @@ class AudioManager {
   public init() {
     if (this.isInitialized) return;
     try {
-      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+      const win = window as WindowWithWebkitAudio;
+      const AudioContextClass = window.AudioContext ?? win.webkitAudioContext;
+      if (!AudioContextClass) throw new Error('Web Audio API not supported');
       this.ctx = new AudioContextClass();
       this.isInitialized = true;
     } catch (e) {
@@ -57,3 +65,4 @@ class AudioManager {
 }
 
 export const audioManager = new AudioManager();
+
