@@ -33,7 +33,7 @@ const Team = memo(function Team() {
       id="team"
       style={{
         padding: '8rem 1.5rem',
-        backgroundColor: 'transparent',
+        backgroundColor: '#ffffff',
       }}
     >
       <div className="mx-auto" style={{ maxWidth: '1400px' }}>
@@ -61,11 +61,11 @@ const Team = memo(function Team() {
         </motion.div>
 
         {/* Typographic List */}
-        <div className="flex flex-col border-t border-[#000000]">
+        <div className="flex flex-col border-t border-black">
           {teamMembers.map((member, i) => (
             <motion.div
               key={member.name}
-              className="relative border-b border-[#000000] group cursor-default"
+              className="relative border-b border-black group cursor-default"
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
               initial={{ opacity: 0, y: 20 }}
@@ -74,7 +74,7 @@ const Team = memo(function Team() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <div 
-                className="pointer-events-none absolute inset-0 bg-[#000000] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100"
+                className="pointer-events-none absolute inset-0 bg-black origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100"
                 style={{ zIndex: 0 }}
               />
               

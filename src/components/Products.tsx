@@ -54,7 +54,7 @@ const Products = memo(function Products() {
       id="products"
       style={{
         padding: '8rem 1.5rem',
-        backgroundColor: 'transparent',
+        backgroundColor: '#f9f9f9',
       }}
     >
       <div className="mx-auto" style={{ maxWidth: '1400px' }}>
@@ -107,10 +107,9 @@ const Products = memo(function Products() {
           <motion.div
             variants={scaleIn}
             onMouseEnter={() => audioManager.playHum()}
-            className="bento-card group relative overflow-hidden bg-[#ffffff] lg:col-span-2 flex flex-col justify-between cursor-default"
+            className="bento-card group relative overflow-hidden bg-[#000000] lg:col-span-2 flex flex-col justify-between cursor-default"
             style={{
-              borderRadius: '0px',
-              border: '1px solid #000000',
+              borderRadius: '0px', // Brutalist square
               padding: 'clamp(2.5rem, 5vw, 4rem)',
             }}
           >
@@ -123,13 +122,14 @@ const Products = memo(function Products() {
               }}
             />
             
+            {/* Top row: badge + status */}
             <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 mb-16">
-              <span className="text-[12px] font-bold tracking-[0.2em] text-[#000000] border border-[#000000]/20 px-4 py-1.5 uppercase">
+              <span className="text-[12px] font-bold tracking-[0.2em] text-white border border-white/20 px-4 py-1.5 uppercase">
                 CODENAME
               </span>
               <div className="flex items-center gap-3">
                 <span className="w-2 h-2 bg-red-500 animate-pulse" />
-                <span className="text-[12px] font-bold tracking-[0.2em] text-[#000000] uppercase">
+                <span className="text-[12px] font-bold tracking-[0.2em] text-white uppercase">
                   Classified / In Development
                 </span>
               </div>
@@ -140,7 +140,7 @@ const Products = memo(function Products() {
                 className="font-black tracking-tighter uppercase"
                 style={{
                   fontSize: 'clamp(4rem, 8vw, 7rem)',
-                  color: '#000000',
+                  color: '#ffffff',
                   lineHeight: 0.85,
                   marginBottom: '2rem',
                 }}
@@ -151,7 +151,7 @@ const Products = memo(function Products() {
                 className="font-medium"
                 style={{
                   fontSize: 'clamp(1.25rem, 2vw, 1.75rem)',
-                  color: '#000000',
+                  color: '#ffffff',
                   lineHeight: 1.4,
                   maxWidth: '700px',
                   letterSpacing: '-0.02em',
@@ -169,10 +169,9 @@ const Products = memo(function Products() {
                 key={i}
                 variants={scaleIn}
                 onMouseEnter={() => audioManager.playHum()}
-                className="bento-card relative bg-[#ffffff] flex flex-col justify-between group flex-1 cursor-default overflow-hidden"
+                className="bento-card relative bg-white flex flex-col justify-between group flex-1 cursor-default"
                 style={{
-                  borderRadius: '0px',
-                  border: '1px solid #000000',
+                  border: '1px solid rgba(0,0,0,0.1)',
                   padding: '2.5rem',
                 }}
               >
@@ -184,7 +183,7 @@ const Products = memo(function Products() {
                   }}
                 />
                 <div 
-                  className="relative z-10 w-12 h-12 bg-[#000000] border border-[#000000] flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300"
+                  className="relative z-10 w-12 h-12 bg-black flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300"
                 >
                   {feature.icon}
                 </div>

@@ -26,7 +26,7 @@ const Vision = memo(function Vision() {
       className="relative"
       style={{
         padding: '12rem 1.5rem',
-        backgroundColor: 'transparent',
+        backgroundColor: '#ffffff',
       }}
     >
       <div
@@ -77,8 +77,8 @@ const Vision = memo(function Vision() {
                 variants={revealUp}
                 className="relative"
               >
-                <div className="w-16 h-[2px] bg-[#000000] mb-6" />
-                <h3 className="text-3xl font-black tracking-tighter text-[#000000] mb-4 uppercase">
+                <div className="w-16 h-[2px] bg-black mb-6" />
+                <h3 className="text-3xl font-black tracking-tighter text-black mb-4 uppercase">
                   {item.title}
                 </h3>
                 <p

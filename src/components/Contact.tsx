@@ -41,7 +41,7 @@ const Contact = memo(function Contact() {
             style={{ gap: '1rem', marginTop: '2rem' }}
           >
             <a
-              href="https://shadovis.me"
+              href="https://shadovis.tech"
               target="_blank"
               rel="noopener noreferrer"
               className="text-2xl font-bold tracking-tight transition-colors duration-300"
@@ -51,7 +51,7 @@ const Contact = memo(function Contact() {
               onMouseEnter={(e) => { e.currentTarget.style.color = '#000000'; }}
               onMouseLeave={(e) => { e.currentTarget.style.color = '#000000'; }}
             >
-              shadovis.me
+              shadovis.tech
             </a>
             <a
               href="mailto:support@shadovis.tech"
